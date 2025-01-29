@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mexican PTO Image Viewer</title>
+    <style>
+        #mexicanCat {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 50px;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <img id="mexicanCat" src="https://media.tenor.com/_5_dPhYWH90AAAAi/mexican-cat.gif" alt="Mexican Cat GIF">
+    
+    <h2>Mexican PTO Trademark Image Viewer</h2>
+    
+    <label for="year">Select Year:</label>
+    <select id="year">
+        <script>
+            for (let year = 2025; year >= 2000; year--) {
+                document.write(`<option value="${year}">${year}</option>`);
+            }
+        </script>
+    </select>
+    
+    <label for="trademark">Enter Trademark Number:</label>
+    <input type="text" id="trademark" placeholder="Enter number">
+    
+    <button onclick="loadImage()">Load</button>
+    
+    <h3>Trademark Image:</h3>
+    <img id="imageFrame" style="border:1px solid #000; max-width: 100%; height: auto; display: none;" />
+    
+    <h3>Generated URL:</h3>
+    <a id="generatedUrl" href="#" target="_blank">Click here to open the image</a>
+    
+    <script>
+        function loadImage() {
+            const year = document.getElementById("year").value;
+            const trademark = document.getElementById("trademark").value.trim();
+            if (!trademark) {
+                alert("Please enter a trademark number.");
+                return;
+            }
+            const url = `https://prod.impi.tm-media.tmv.io/lm/tmimage_trim96/MX/RM${year}0${trademark}`;
+            
+            const imageFrame = document.getElementById("imageFrame");
+            imageFrame.src = url;
+            imageFrame.style.display = "block";
+            
+            document.getElementById("generatedUrl").href = url;
+            document.getElementById("generatedUrl").textContent = url;
+        }
+    </script>
+</body>
+</html>
