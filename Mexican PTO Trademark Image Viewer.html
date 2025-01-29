@@ -12,6 +12,13 @@
             width: 50px;
             height: auto;
         }
+        #footer {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            font-size: small;
+            color: gray;
+        }
     </style>
 </head>
 <body>
@@ -29,7 +36,7 @@
     </select>
     
     <label for="trademark">Enter Trademark Number:</label>
-    <input type="text" id="trademark" placeholder="Enter number">
+    <input type="text" id="trademark" placeholder="  ">
     
     <button onclick="loadImage()">Load</button>
     
@@ -38,6 +45,8 @@
     
     <h3>Generated URL:</h3>
     <a id="generatedUrl" href="#" target="_blank">Click here to open the image</a>
+    
+    <p id="footer">Poorly developed by Giovanni Trano</p>
     
     <script>
         function loadImage() {
